@@ -625,6 +625,7 @@
                 <div class="column ss-copyright">
                     <span>© Copyright Luther 2021</span> 
                     <span>Design by <a href="https://www.styleshout.com/">StyleShout</a></span>
+                     <span><p>Page Views: <span id="pageViews">0</span></p></span>
                 </div>
 
                 <div class="ss-go-top">
@@ -641,6 +642,27 @@
 
     <!-- Java Script
     ================================================== -->
+     <script>
+        // Function to increment and display the page view count
+        function incrementPageViews() {
+            // Check if the 'pageViews' key exists in Local Storage
+            if (localStorage.getItem('pageViews') === null) {
+                // If not, create it and set the count to 1
+                localStorage.setItem('pageViews', '1');
+            } else {
+                // If it exists, get the current count and increment it
+                var count = parseInt(localStorage.getItem('pageViews'));
+                count++;
+                localStorage.setItem('pageViews', count.toString());
+            }
+
+            // Display the updated count on the page
+            document.getElementById('pageViews').textContent = localStorage.getItem('pageViews');
+        }
+
+        // Call the incrementPageViews function when the page loads
+        window.onload = incrementPageViews;
+    </script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 
